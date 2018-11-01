@@ -39,3 +39,21 @@
   cursor: pointer;
   color: rgba(0, 0, 0, .95)
 }
+
+.navigation__mobile-menu-btn {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .options-bar {
+    display: none;
+  }
+
+  .navigation__logo  {
+    display: none;
+  }
+
+  .navigation__mobile-menu-btn {
+    display: inline-block;
+  }
+}

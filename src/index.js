@@ -39,15 +39,19 @@ window.addEventListener('load', () => {
   const $svg = document.querySelector('svg');
   const testTable = new TableComponent(TableConfig.get());
   const testTable2 = new TableComponent(TableConfig.get());
+  const testTable3 = new TableComponent(TableConfig.get());
   testTable.setPosition(60, 60);
   testTable2.setPosition(60, 300);
+  testTable3.setPosition(450, 300);
 
   const t1 = testTable.render(tableData);
   const t2 = testTable2.render(tableData);
+  const t3 = testTable3.render(tableData);
 
   $svg.innerHTML = `
     ${t1}
     ${t2}
+    ${t3}
   `;
 
   const appController =  new AppController();
