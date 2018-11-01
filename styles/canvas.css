@@ -36,3 +36,9 @@
   width: 100%;
   height: 100%;
 }
+
+.canvas-relation {
+  fill: none;
+  stroke-width: 1px;
+  stroke: white;
+}
