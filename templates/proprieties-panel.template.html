@@ -1,16 +1,57 @@
 <section class="properties-panel panel">
-  <h2>Properties</h2>
-     <section class="proprieties-tree">
-      
-      
-         <p class="proprieties_tree-list_p">Model data</p>
-         <p class="proprieties_tree-list_p">Additional SQL scripts</p>
-         <p class="proprieties_tree-list_p">Model validation settings</p>
-         <p class="proprieties_tree-list_p">Format</p>
-         <p class="proprieties_tree-list_p">SQL generation settings</p>
-         <p class="proprieties_tree-list_p">Default additional proprieties</p>
-        
-        
-       
+  <h2 class="panel__title">Properties</h2>
+  <section class="panel__content">
+    <section class="table-properties">
+      <section class="table-properties__header">
+        <div class="input-form">
+          <label>Name</label>
+          <input type="text" />
+        </div>
+      </section>
+      <section class="table-properties__columns">
+        <header class="table-properties__columns__header">
+          <label>Name</label>
+          <label>Type</label>
+          <label>Not Null</label>
+          <label>Pk</label>
+        </header>
+
+        <ul class="table-properties__columns__list">
+          <li>
+            <div class="input-form">
+              <label>Name</label>
+              <input type="text" />
+            </div>
+          </li>
+          <li>
+            <div class="input-form">
+              <label>Type</label>
+              <input type="text" />
+            </div>
+          </li>
+          <li>
+            <span class="input-checkbox">
+              <label><span>Not Null</span>
+                <input type="checkbox">
+              </label>
+            </span>
+          </li>
+          <li>
+            <span class="input-checkbox">
+              <label><span>PK</span>
+                <input type="checkbox">
+              </label>
+            </span>
+          </li>
+          <li>
+            <i class="material-icons">edit</i>
+          </li>
+          <li>
+            <i class="material-icons">delete</i>
+          </li>
+        </ul>
+      </section>
     </section>
+
+  </section>
 </section>
