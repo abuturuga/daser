@@ -1,16 +1,14 @@
 .table {
-
+  fill: white;
 }
 
 .table-background {
-  fill: black;
-  opacity: 0.25;
+  fill: #495459;
 }
 
 .table-border {
   fill: none;
   stroke-width: 2px;
-  stroke: #ecf0f1;
 }
 
 .table__header {
@@ -18,7 +16,7 @@
 }
 
 .table__header__background {
-  fill: #7f8c8d;
+  fill: #212b30;
 }
 
 .table__header__title {
@@ -26,19 +24,15 @@
   font-size: 12px;
 }
 
-
 rect {
   fill: none;
 }
 
-.small { font: italic 13px sans-serif; }
-
-
-.col-name text {
+.col-name {
   fill: #ecf0f1;
 }
 
-.col-type text {
+.col-type {
   fill: #e67e22;
 }
 
@@ -47,9 +41,13 @@ rect {
 }
 
 text {
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .icon {
   fill: white;
+}
+
+.icon.table__column_key-pk {
+  fill: #fdd835;
 }

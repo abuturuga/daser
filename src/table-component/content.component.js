@@ -11,13 +11,14 @@ export class ContentComponent {
     const horizontalGrid = props.rows.map((_, index) => {
       const y = index * height;
       return `<line x1="0" y1="${y}" x2="${width}" y2="${y}" stroke-width="1" stroke="black"/>`
-    }).join('');
+    })
+    .filter((_, index) => index > 0).join('');
 
     const gridEnd = props.rows.length * height;
     const vertivalGrid = content.layout.map(field => {
       const { start } = field;
       return `<line x1="${start}" y1="0" x2="${start}" y2="${gridEnd}" stroke-width="1" stroke="black"/>`            
-    });
+    }).filter((_, index) => index > 0).join('');
 
     return `<g class="grid">
       ${horizontalGrid}
@@ -26,7 +27,7 @@ export class ContentComponent {
   }
 
   generateKeyTemplate(meta, start) {
-      return `<use xlink:href="assets/icons/key.svg#key-icon" class="icon" x="${start}" y="6" width="18" height="18"></use>`
+      return `<use xlink:href="assets/icons/key.svg#key-icon" class="icon table__column_key-pk" x="${start}" y="6" width="18" height="18"></use>`
   }
 
   generateColsTemplate(cols) {
@@ -42,7 +43,7 @@ export class ContentComponent {
         return this.generateKeyTemplate(value, start)
       }
 
-      return `<text x="${start}" y="20" class="col-${key}">${value}</text>`;
+      return `<text x="${start + 4}" y="20" class="col-${key}">${value}</text>`;
     }).join('');
   }
 

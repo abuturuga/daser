@@ -20,8 +20,8 @@ class TableConfig {
           {key: 'key', start: 4, end: 20},
           {key: 'name', start: 24, end: 120},
           {key: 'type', start: 120, end: 200},
-          {key: 'default', start: 208, end: 250},
-          {key: 'edit', start: 250, end: 300}
+          {key: 'default', start: 220, end: 250},
+          {key: 'edit', start: 270, end: 300}
         ],
         hasVerticalGrid: true,
         hasHorizontalGrid: true
