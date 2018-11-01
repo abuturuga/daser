@@ -16,7 +16,7 @@
    list-style-type: none;
 }
 .note-tree{
-  border-style: solid;
+    border-style: solid;
     border-width: 5px;
     border-color:hsl(0, 0%, 20%);
 }
