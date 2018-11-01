@@ -1,20 +1,35 @@
 <section class="properties-panel panel">
-  <h2 class="panel__title">Properties</h2>
-  <section class="panel__content">
-    <section class="table-properties">
-      <section class="table-properties__header">
+  <header class="panel__header">
+    <h2 class="panel__header__title">Properties</h2>
+  </header>
+  <div class="panel__content">
+    <div class="table-properties-panel">
+      <section class="panel__content__section">
+        <header class="panel__content__section__header">
+          <h3 class="panel__content__section__header__title">Meta</h3>
+        </header>
         <div class="input-form">
           <label>Name</label>
           <input type="text" />
         </div>
+
+        <div class="input-form">
+          <label>Description</label>
+          <textarea rows="2"></textarea>
+        </div>
       </section>
-      <section class="table-properties__columns">
-        <header class="table-properties__columns__header">
+
+      <section class="panel__content__section">
+        <header class="panel__content__section__header">
+          <h3 class="panel__content__section__header__title">Tables</h3>        
+        </header>
+    
+        <div class="table-properties__columns__header">
           <label>Name</label>
           <label>Type</label>
-          <label>Not Null</label>
-          <label>Pk</label>
-        </header>
+          <label>NL</label>
+          <label>PK</label>
+        </div>
 
         <ul class="table-properties__columns__list">
           <li>
@@ -22,36 +37,25 @@
               <label>Name</label>
               <input type="text" />
             </div>
-          </li>
-          <li>
             <div class="input-form">
               <label>Type</label>
               <input type="text" />
             </div>
-          </li>
-          <li>
             <span class="input-checkbox">
               <label><span>Not Null</span>
                 <input type="checkbox">
               </label>
             </span>
-          </li>
-          <li>
             <span class="input-checkbox">
               <label><span>PK</span>
                 <input type="checkbox">
               </label>
             </span>
-          </li>
-          <li>
             <i class="material-icons">edit</i>
-          </li>
-          <li>
             <i class="material-icons">delete</i>
           </li>
         </ul>
       </section>
-    </section>
-
-  </section>
+    </div>
+  </div>
 </section>

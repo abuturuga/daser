@@ -5,10 +5,11 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  background: #757575;
 }
 
 .navigation__logo {
-  color: #004D40;
+  color: #4caf50;
   font-weight: bold;
   font-size: 20px;
 }

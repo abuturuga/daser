@@ -1,6 +1,7 @@
 .canvas {
   position: relative;
   display: block;
+  background: #757575;
 }
 
 .canvas__zoom-bar {
