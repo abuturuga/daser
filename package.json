@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config=webpack.config.js --mode=production",
-    "serve": "webpack-dev-server --mode development --open --host 0.0.0.0"
+    "serve": "webpack-dev-server --mode development --open"
   },
   "devDependencies": {
     "css-loader": "^1.0.0",
