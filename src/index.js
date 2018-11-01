@@ -1,6 +1,7 @@
 import TableConfig from './table.config.js';
 import types from './types.js';
 import { TableComponent } from './table-component/table.comonent.js';
+import { AppController } from './app.controller';
 
 const tableData = {
   title: 'Main table',
@@ -48,4 +49,7 @@ window.addEventListener('load', () => {
     ${t1}
     ${t2}
   `;
+
+  const appController =  new AppController();
+  appController.init();
 });
