@@ -5,6 +5,9 @@
 
 .panel__header {
   padding: 8px 4px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .panel__header__title {
@@ -12,6 +15,7 @@
   padding: 0;
   font-size: 16px;
   font-weight: 500;
+  line-height: 1;
 }
 
 .panel__content {
