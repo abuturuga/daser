@@ -8,7 +8,7 @@
   background: #757575;
 }
 
-.navigation__logo {
+.logo {
   color: #4caf50;
   font-weight: bold;
   font-size: 20px;
@@ -44,12 +44,43 @@
   display: none;
 }
 
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: #616161;
+  z-index: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile-menu .logo {
+  position: absolute;
+  top: 16px;
+}
+
+.mobile-menu__list li {
+  padding: 8px;
+  border-bottom: 2px solid #4caf50;
+}
+
+.mobile-menu__list li a {
+  display: block;
+  font-size: 20px;
+  text-decoration: none;
+  color: white;
+}
+
 @media only screen and (max-width: 768px) {
   .options-bar {
     display: none;
   }
 
-  .navigation__logo  {
+  .logo {
     display: none;
   }
 
