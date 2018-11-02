@@ -51,8 +51,8 @@ export class AppController {
     const $panelMobileClose = document.querySelectorAll('.panel__header__close-btn--mobile');
     [].forEach.call($panelMobileClose, $btn => {
       $btn.addEventListener('click', _ => {
-        $structurePanel.style.transform = 'translate(-100%, 0)';
-        $propertiesPanel  .style.transform = 'translate(-100%, 0)';
+        $structurePanel.style.transform = null;//'translate(-100%, 0)';
+        $propertiesPanel.style.transform = null;//'translate(-100%, 0)';
       });
     });
   }

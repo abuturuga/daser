@@ -18,10 +18,6 @@
   line-height: 1;
 }
 
-.panel__content {
-
-}
-
 .panel__content__section {
   background: #494949;
   padding: 8px;
@@ -40,6 +36,18 @@
 }
 
 .panel__header__close-btn--mobile {
+  display: none;
+}
+.panel__header__close-btn {
+  color: #4caf50;
+  background: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  margin-right: 4px;
+}
+
+.mobile-options-btn {
   display: none;
 }
 
@@ -65,5 +73,9 @@
 
   .panel__header__close-btn {
     display: none;
+  }
+
+  .mobile-options-btn {
+    display: inline-block;
   }
 }
