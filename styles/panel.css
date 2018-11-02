@@ -38,3 +38,32 @@
   font-size: 14px;
   font-weight: 400;
 }
+
+.panel__header__close-btn--mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .panel {
+    display: block;
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    bottom: 0;
+    transform: translate(-100%, 0);
+
+    transition: .8s transform ease-in;
+    z-index: 1;
+  }
+
+  .panel__header__close-btn--mobile {
+    display: inline-block;
+  }
+
+  .panel__header__close-btn {
+    display: none;
+  }
+}

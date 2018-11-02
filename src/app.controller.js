@@ -20,10 +20,40 @@ export class AppController {
     this.mobileMenuBtn.addEventListener('click', _ => {
       this.mobileMenu.style.display = 'flex';
     });
+    const $structurePanel = document.querySelector('.structure-panel');
+    const $propertiesPanel = document.querySelector('.properties-panel');
 
-    const $mbMnClose = this.mobileMenu.querySelector('.mobile-menu__close');
-    $mbMnClose.addEventListener('click', _ => {
+    this.mobileMenu.addEventListener('click', event => {
+      const { target } = event;
+      const href = target.getAttribute('href');
+      
+      if (!href) {
+       return;
+      }
+
+      setTimeout(() => {
+        switch (href) {
+          case '#/structure':
+            $structurePanel.style.display = 'block';
+            $structurePanel.style.transform = 'translate(0, 0)';
+            break;
+          case '#/Properties':
+            $propertiesPanel.style.display = 'block';
+            $propertiesPanel  .style.transform = 'translate(0, 0)';
+            break;
+          case '#/home':
+          break;
+        }
+      }, 200);
       this.mobileMenu.style.display = 'none';
+    });
+
+    const $panelMobileClose = document.querySelectorAll('.panel__header__close-btn--mobile');
+    [].forEach.call($panelMobileClose, $btn => {
+      $btn.addEventListener('click', _ => {
+        $structurePanel.style.transform = 'translate(-100%, 0)';
+        $propertiesPanel  .style.transform = 'translate(-100%, 0)';
+      });
     });
   }
 
