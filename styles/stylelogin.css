@@ -5,7 +5,9 @@ body {
   font-size: 14px;
 }
 form {border: 6px solid hsl(0, 0%, 47%);
-      background: hsl(0, 0%, 67%)}
+      background: hsl(0, 0%, 67%);
+      margin-top:200px;
+      }
 
 input[type=text], input[type=password] {
     width: 100%;
@@ -30,25 +32,46 @@ button:hover {
     opacity: 0.8;
 }
 
-.cancelbtn {
+.continue {
     width: auto;
     padding: 10px 18px;
-    background-color: #f44336;
+    background-color:  #004D40;
 }
 
-
-
+.means {
+   color: hsl(0, 0%, 27%);
+   font-weight: bold;
+   font-size: 60px;
+  
+}
+.wmeans {
+   color: hsl(0, 0%, 27%);
+   font-weight: bold;
+   font-size: 40px;
+  
+}
+.w2means {
+   color: hsl(0, 0%, 27%);
+   font-weight: bold;
+   font-size: 25px;
+}
 .container {
     padding: 16px;
 }
 
-span.psw {
-    float: right;
-    padding-top: 16px;
-}
+
 
 a{
   color:hsl(0, 0%, 17%)
+}
+.row::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+[class*="col-"] {
+    float: left;
+    padding: 15px;
 }
 
 /* For mobile phones: */
@@ -73,5 +96,23 @@ a{
 .navigation__logo {
   color: #004D40;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 70px;
 }
+
+img {
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    width: 100%;
+    height: auto;
+}
+
+.left{
+ text-align:left;
+}
+.center{
+ text-align:center;
+}
+.right{
+text-align:right;
+}
+
