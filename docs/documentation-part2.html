@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Report-part2</title>
+</head>
+<body>
+  <section>
+    <h1>Raport progres aplicatie</h1>
+  </section>
+  <section role="contentinfo">
+    <dl>
+      <dt><b>Autori</b></dt>
+      <dd>
+        <a>Buturuga Alexandru</a>
+        <br></br>
+        <a>Cosnita Ioan-Lucian</a>
+      </dd>
+    </dl>
+  </section>
+  <section>
+    <h2>Cuprins</h2>
+    <ul>
+      <li><a href="#sumar">Sumar</a</li>
+      <li><a href="#incadrareaplicatie">Incadrare aplicatie in categoria aplicatiilor SPA</a></li>
+      <li><a href="#stocare">Detalii despre stocare</a></li>
+      <li><a href="#manipularedate">Manierele de manipulare a datelor</a></li>
+      <li><a href="#surse">Surse</a></li>
+    </ul>
+  </section>
+
+
+
+  <section id="sumar">
+    <h1>Sumar progres aplicatie</h1>
+    <p>Aceata  etapa a implicat:</p>
+    <ul>
+    <li>investigarea structurii SPA (Singe Page Application) si modelarea arhitecturii aplicatiei noastre in concordanta cu
+    caracteristicile ei</li>
+      <li>investigarea modalitatilor de stocare a datelor la nivel de client si a modalitatilor de manipulare a datelor.</li>
+    </ul>
+  </section>
+  
+  
+  <section id="incadrareaplicatie">
+    <h1>Incadrare aplicatie in sablonul SPA</h1>
+    <p>In zilele noastre fluiditatea este o caracteristica esentiala a aplicatiilor web. Dorinta de a avea rapiditate marita cu care se incarca datele si accesibilitate au dus
+    la o renastere a dezvoltarii aplicattiilor web, care incep sa depinda din ce in ce mai putin de server si sa se comporte din ce in ce mai mult ca o aplicatie instalata in device-ul utilizatorului.</p>
+    <p>Din aceste motive enumerate mai sus am decis sa modelam arhitectura aplicatiei noastre in concordanta cu structura Single Page Application </p> 
+  </section>
+  
+  
+    <section id="stocare">
+    <h1>Maniera de stocare a datelor la nivel de client</h1>
+    <p>Pentru stoacarea datelor am decis sa folosim tehnologia LocalStorage.Motivele pentru care am ales aceasta maniera de stocare sunt:</p>
+    <ul>
+      <li>acoperire foarte buna;LocalStorage nu este o tehnologie noua,chiar si Internet Explorer 8 suporta aceasta tehnologie,LocalStorahe fiind considerat parte din HTML5</li>
+      <li>permite o economisire a traficului de date si a bateriei deviceurilor</li>
+      <li>LocalStorage e valabil pentru fiecare pagina si ramane chiar si atunci cand browserul e inchis</li>
+      <li>datele stocate nu au o periada de expirare;ele vor ramane pana la golirea memorie cache a browserului web</li>
+    </ul>
+  </section>
+
+<section id="manipularedate">
+    <h1>Manierele de manipulare a datelor</h1>
+    <p>Datele proprii vor putea fi manipulate cu usurinta, acestea fiind salvate in formatul JSON-LD, acesta fiind usor de citit si compilat.</p>
+    <p>Aplicatia noastra va avea nevoie sa foloseasca API-urile externe doar pentru salvarea sau descarea unei scheme bazei de date.Pentru acest scop vom folosi GoogleDrive sau Dropbox cu ajutorul unor formate
+    ca JSON sau XML</p>
+</section>
+
+   
+
+
+
+  <section id="surse">
+    <h1>Surse</h1>
+    <p>Designul aplicatiei a fost inspirat de catre platforma:</p>
+    <ul>
+      <li>https://app.sqldbm.com/SQLServer/Draft/</li>
+    </ul>
+  </section>
+</body>
+
+</html>
