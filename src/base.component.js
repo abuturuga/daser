@@ -33,9 +33,9 @@ export class BaseComponent {
     componentContainer.appendChild($component);
   }
 
-  render() {
-    this.$element.innerHTML = this.getTemplate();
-    this.bindEventListeners();
+  render(properties) {
+    this.$element.innerHTML = this.getTemplate(properties);
+    this.bindEventListeners(properties);
     this.renderChildComponents();
     return this.$element;
   }
