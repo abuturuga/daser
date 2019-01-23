@@ -20,9 +20,9 @@ export class BaseComponent {
     this.$element.classList.add(rootClass);
   }
 
-  bindEventListeners() {
+  bindEventListeners() {}
 
-  }
+  renderChildComponents() {}
 
   attach($component, selector) {
     const componentContainer = this.$element.querySelector(selector);
@@ -30,12 +30,13 @@ export class BaseComponent {
       return;
     }
 
-    componentContainer.apppendChild($component);
+    componentContainer.appendChild($component);
   }
 
   render() {
     this.$element.innerHTML = this.getTemplate();
     this.bindEventListeners();
+    this.renderChildComponents();
     return this.$element;
   }
 }
