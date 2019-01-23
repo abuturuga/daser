@@ -5,7 +5,7 @@ const devMode = process.env.NODE_ENV !== 'production'
 module.exports = {
   entry: {
     bundle: './src/index.js',
-    style: './styles/main.css'
+    style: './styles/main.scss'
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -18,11 +18,13 @@ module.exports = {
     }),
   ],
   module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"]
-      }
-    ]
+    rules: [{
+        test: /\.scss$/,
+        use: [
+            "style-loader",
+            "css-loader",
+            "sass-loader"
+        ]
+    }]
   }
 }
