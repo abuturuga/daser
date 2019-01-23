@@ -13,7 +13,7 @@ module.exports = {
       chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
     }),
     new HtmlWebPackPlugin({
-      template: "./templates/index.template.html",
+      template: "./index.html",
       filename: "./index.html",
     }),
   ],
