@@ -14,10 +14,11 @@ export class StructurePanelComponent extends BaseComponent {
 
   renderChildComponents() {
     this.panelHeader = new PanelHeaderComponent();
-    this.attach(this.panelHeader.render({
-      title: 'Structure'
-    }), PANEL_HEADER_CLASS);
 
+    this.attach(this.panelHeader.render({
+      title: 'Structure',
+      onClose: () => console.log('on close')
+    }), `.${PANEL_HEADER_CLASS}`);
   }
 
   getTemplate() {
