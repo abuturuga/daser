@@ -36,10 +36,6 @@ export class ModalComponent extends BaseComponent {
       .addEventListener('click', event => {
         this.close();
       });
-
-    this.$backdrop.addEventListener('click', () => {
-      this.close();
-    });
   }
 
   updateComponent() {

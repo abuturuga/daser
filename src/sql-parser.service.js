@@ -31,15 +31,15 @@ function ExtractColumns(tableSql) {
 }
 
 export function parseSQL(sql) {
-  GetTablesStrings(sql)
-  .map((tableSql, index) => {
-    const title = ExtractTableTitle(tableSql);
-    const columns = ExtractColumns(tableSql);
-    return {
-      id: index,
-      sql: tableSql,
-      title,
-      columns
-    }
+  return GetTablesStrings(sql)
+    .map((tableSql, index) => {
+      const title = ExtractTableTitle(tableSql);
+      const rows = ExtractColumns(tableSql);
+      return {
+        id: index,
+        sql: tableSql,
+        title,
+        rows
+      }
   });
 }

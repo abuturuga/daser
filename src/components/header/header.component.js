@@ -26,7 +26,9 @@ export class HeaderComponent extends BaseComponent {
     Array.prototype.forEach.call(this.$element.querySelectorAll(`.${WORK_BAR_BUTTON}`), ($button) => {
       $button.addEventListener('click', event => {
         const type = $button.dataset.type;
-        // TODO:
+        if (type === 'cloud_upload') {
+          this.sqlModalComponent.open();
+        }
       });
     });
   }
@@ -35,7 +37,6 @@ export class HeaderComponent extends BaseComponent {
     this.sqlModalComponent = new SQLModalComponent();
 
     this.attach(this.sqlModalComponent.render(), `.${SQL_MODAL_CLASS}`);
-    this.sqlModalComponent.open();
   }
 
   getTemplate() {
