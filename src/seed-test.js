@@ -1,6 +1,6 @@
 import types from './types.js';
 import PubSub from './pubsub.js';
-import { UPDATE_STATE, updateState } from './actions.js';
+import { updateState } from './actions.js';
 
 const tableData = {
   title: 'Main table',

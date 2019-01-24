@@ -1,5 +1,6 @@
 import { BaseComponent } from '../../base.component.js';
 import { SQLModalComponent } from './sql-modal.component.js';
+import { GeneratedModalComponent } from './generated-modal.component.js';
 import { togglePropertiesPanel } from '../../actions.js';
 import PubSub from '../../pubsub.js';
 
@@ -11,11 +12,13 @@ const MOBILE_BUTTON = `${COMPONENT_CLASS}__mobile-menu-btn`;
 const WORK_BAR = `${COMPONENT_CLASS}__work-bar`;
 const WORK_BAR_BUTTON = `${WORK_BAR}__button`;
 const SQL_MODAL_CLASS = 'sql-modal-container';
+const GENERATED_MODAL_CLASS = 'generated-modal-container';
 
 export class HeaderComponent extends BaseComponent {
 
   constructor() {
     super('div', COMPONENT_CLASS);
+    this.tables = [];
   }
   
   renderButtonTemplate(name) {
@@ -25,6 +28,10 @@ export class HeaderComponent extends BaseComponent {
   }
 
   bindEventListeners() {
+    PubSub.on('state:changed', (state) => {
+      this.tables = state.tables;
+    });
+
     Array.prototype.forEach.call(this.$element.querySelectorAll(`.${WORK_BAR_BUTTON}`), ($button) => {
       $button.addEventListener('click', event => {
         const type = $button.dataset.type;
@@ -32,6 +39,8 @@ export class HeaderComponent extends BaseComponent {
           this.sqlModalComponent.open();
         } else if(type === 'settings') {
           PubSub.emit('state:set', togglePropertiesPanel(true));
+        } else if(type === 'save') {
+          this.generatedModalComponent.open(this.tables);
         }
       });
     });
@@ -39,8 +48,10 @@ export class HeaderComponent extends BaseComponent {
 
   renderChildComponents() {
     this.sqlModalComponent = new SQLModalComponent();
+    this.generatedModalComponent = new GeneratedModalComponent();
 
     this.attach(this.sqlModalComponent.render(), `.${SQL_MODAL_CLASS}`);
+    this.attach(this.generatedModalComponent.render(), `.${GENERATED_MODAL_CLASS}`);
   }
 
   getTemplate() {
@@ -72,6 +83,7 @@ export class HeaderComponent extends BaseComponent {
         ${ saveButtons }
       </div>
       <div class="${SQL_MODAL_CLASS}"></div>
+      <div class="${GENERATED_MODAL_CLASS}"></div>
     `
   }
 
