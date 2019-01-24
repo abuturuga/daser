@@ -15,6 +15,17 @@ export class StructurePanelComponent extends BaseComponent {
 
   constructor() {
     super('div', COMPONENT_CLASS);
+
+    this.onTableSelect = this.onTableSelect.bind(this);
+    this.onReferenceSelect = this.onReferenceSelect.bind(this);
+  }
+
+  onTableSelect(table) {
+    console.log(table);
+  }
+
+  onReferenceSelect(reference) {
+    console.log(reference);
   }
 
   renderChildComponents() {
@@ -29,12 +40,14 @@ export class StructurePanelComponent extends BaseComponent {
 
     this.attach(this.tableListComponent.render({
       items: ['Main1', 'Main2'],
-      icon: 'table_chart'
+      icon: 'table_chart',
+      onSelect: this.onTableSelect
     }), `.${TABLES_LIST_CLASS}`);
 
     this.attach(this.referencesListComponent.render({
       items: ['reference1', 'reference2'],
-      icon: 'show_chart'
+      icon: 'show_chart',
+      onSelect: this.onReferenceSelect
     }), `.${REFERENCES_LIST_CLASS}`);
   }
 
