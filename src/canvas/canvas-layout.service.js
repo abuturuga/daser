@@ -27,10 +27,6 @@ export class CanvasLayoutService {
       let y = 30;
       let x = lastTable.x + width + 20;
       
-      if (lastIndex % 2 === 0) {
-        y += 30;
-        x = 40;
-      }
 
       this.tables.push({
         id: table.id,

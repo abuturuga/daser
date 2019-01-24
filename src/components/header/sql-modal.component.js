@@ -27,7 +27,7 @@ export class SQLModalComponent extends ModalComponent {
   getModalContent() {
     return `
       <div class="input-form">
-        <textarea placeholder="SQL code here..." row="8" class="${SQL_INPUT_CLASS}"></textarea>
+        <textarea placeholder="SQL code here..." rows="8" class="${SQL_INPUT_CLASS}"></textarea>
       </div>
       <button class="${PARSE_BUTTON_CLASS}">Parse</button>
     `
