@@ -1,51 +1,8 @@
-.panel {
-  padding: 8px;
-  background: #757575;
-}
 
-.panel__header {
-  padding: 8px 4px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
 
-.panel__header__title {
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1;
-}
 
-.panel__content__section {
-  background: #494949;
-  padding: 8px;
-  margin-bottom: 8px;
-}
 
-.panel__content__section__header {
-  border-bottom: 2px solid #4caf50;
-  padding: 4px 0;
-  margin-bottom: 8px;
-}
 
-.panel__content__section__header__title {
-  font-size: 14px;
-  font-weight: 400;
-}
-
-.panel__header__close-btn--mobile {
-  display: none;
-}
-.panel__header__close-btn {
-  color: #4caf50;
-  background: white;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  margin-right: 4px;
-}
 
 .mobile-options-btn {
   display: none;

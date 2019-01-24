@@ -1,2 +1,7 @@
 @import './panel-header/panel-header.component.scss';
 @import './panel-content/panel-content.component.scss';
+
+.panel {
+  padding: 8px;
+  background: #757575;
+}

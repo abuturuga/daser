@@ -2,8 +2,8 @@ import { BaseComponent } from '../../../../base.component.js';
 
 /** Component CSS classes */
 const COMPONENT_CLASS = 'panel__header';
-const CLOSE_BUTTON = `${COMPONENT_CLASS}__close-btn`;
-const CLOSE_BUTTON_MOBILE = `${COMPONENT_CLASS}__close-btn--mobile`;
+const CLOSE_BUTTON = `${COMPONENT_CLASS}__close-button`;
+const CLOSE_BUTTON_MOBILE = `${COMPONENT_CLASS}__close-button--mobile`;
 
 /**
  * Render the header of the panel, emit on close events.

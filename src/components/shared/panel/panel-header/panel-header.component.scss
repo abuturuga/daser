@@ -1,0 +1,27 @@
+.panel__header {
+  padding: 8px 4px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  &__title {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  &__close-button {
+    color: #4caf50;
+    background: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    margin-right: 4px;
+  }
+
+  &__close-button--mobile {
+    display: none;
+  }
+}

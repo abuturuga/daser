@@ -1,0 +1,16 @@
+.panel__section {
+  background: #494949;
+  padding: 8px;
+  margin-bottom: 8px;
+
+  &__header {
+    border-bottom: 2px solid #4caf50;
+    padding: 4px 0;
+    margin-bottom: 8px;
+
+    &__title {
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+}

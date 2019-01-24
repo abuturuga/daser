@@ -1,8 +1,12 @@
+const COMPONENT_CLASS = 'panel__section'
+const HEADER_CLASS = `${COMPONENT_CLASS}__header`;
+
+
 export function PanelContentComponent(title, content) {
   return `
-    <section class="panel__content__section">
-      <header class="panel__content__section__header">
-        <h3 class="panel__content__section__header__title">${title}</h3>
+    <section class="${COMPONENT_CLASS}">
+      <header class="${HEADER_CLASS}">
+        <h3 class="${HEADER_CLASS}__title">${title}</h3>
       </header>
       ${content}
     </section>
