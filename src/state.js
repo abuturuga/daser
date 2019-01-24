@@ -1,4 +1,5 @@
 import types from './types.js';
+import PubSub from './pubsub.js';
 
 const tableData = {
   title: 'Main table',
@@ -33,9 +34,17 @@ const tableData = {
 };
 
 const state = {
-  tables: Array(4).fill(0).map(_ => Object.assign({}, tableData))
+  tables: Array(4).fill(0).map(_ => Object.assign({}, tableData)),
+  references: []
 }
 
-export function get() {
-  return state
+PubSub.on('state:set', (event) => {
+
+  PubSub.emit('state:changed', state);
+});
+
+
+
+export function init() {
+  PubSub.emit('state:set', state);
 }

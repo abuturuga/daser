@@ -6,6 +6,8 @@ export class BaseComponent {
 
   constructor(rootType, rootClass) {
     this.$element = null;
+    this.state = null;
+
     this.buildRootElement(rootType, rootClass);
   }
 
@@ -31,6 +33,13 @@ export class BaseComponent {
     }
 
     componentContainer.appendChild($component);
+  }
+
+  updateComponent() {}
+
+  setState(state) {
+    this.state = Object.assign({}, this.state, state);
+    this.updateComponent();
   }
 
   render(properties) {

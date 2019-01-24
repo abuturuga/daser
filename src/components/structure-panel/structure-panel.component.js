@@ -1,4 +1,5 @@
 import { BaseComponent } from '../../base.component.js';
+import PubSub from '../../pubsub.js';
 import {
   PanelHeaderComponent,
   PanelContentComponent,
@@ -16,8 +17,24 @@ export class StructurePanelComponent extends BaseComponent {
   constructor() {
     super('div', COMPONENT_CLASS);
 
+    this.state = {
+      tables: [],
+      references: []
+    };
+
     this.onTableSelect = this.onTableSelect.bind(this);
     this.onReferenceSelect = this.onReferenceSelect.bind(this);
+    this.handleStateChange = this.handleStateChange.bind(this);
+
+    PubSub.on('state:changed', this.handleStateChange);
+  }
+
+  handleStateChange(state) {
+    const { tables, references } = state;
+
+    this.setState({
+      tables: tables.map(table => table.title)
+    });
   }
 
   onTableSelect(table) {
@@ -26,6 +43,18 @@ export class StructurePanelComponent extends BaseComponent {
 
   onReferenceSelect(reference) {
     console.log(reference);
+  }
+
+  updateComponent() {
+    this.tableListComponent.update({
+      items: this.state.tables,
+      icon: 'table_chart'
+    });
+
+    this.referencesListComponent.update({
+      items: this.state.references,
+      icon: 'show_chart'
+    });
   }
 
   renderChildComponents() {
@@ -39,13 +68,13 @@ export class StructurePanelComponent extends BaseComponent {
     }), `.${PANEL_HEADER_CLASS}`);
 
     this.attach(this.tableListComponent.render({
-      items: ['Main1', 'Main2'],
+      items: [],
       icon: 'table_chart',
       onSelect: this.onTableSelect
     }), `.${TABLES_LIST_CLASS}`);
 
     this.attach(this.referencesListComponent.render({
-      items: ['reference1', 'reference2'],
+      items: [],
       icon: 'show_chart',
       onSelect: this.onReferenceSelect
     }), `.${REFERENCES_LIST_CLASS}`);

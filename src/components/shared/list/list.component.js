@@ -11,6 +11,10 @@ export class ListComponent extends BaseComponent {
     this.items = [];
   }
 
+  update(properties) {
+    this.$element.innerHTML = this.getTemplate(properties);
+  }
+
   bindEventListeners(properties) {
     this.$element.addEventListener('click', event => {
       const { path } = event;
@@ -25,13 +29,15 @@ export class ListComponent extends BaseComponent {
 
   getTemplate(properties) {
     const icon = properties.icon ? `<i class="material-icons">${properties.icon}</i>` : '';
-    
-    return properties.items.map(item => `
-      <li class="${ITEM_CLASS}" data-item=${item}>
-        ${icon}
-        <span>${item}</span>
-      </li>
-    `).join('');
+
+    return (properties.items.length === 0)
+      ? '<div>No items<div>' 
+      : properties.items.map(item => `
+          <li class="${ITEM_CLASS}" data-item=${item}>
+            ${icon}
+            <span>${item}</span>
+          </li>
+      `).join('');
   }
 
 }
