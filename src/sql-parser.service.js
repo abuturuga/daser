@@ -31,8 +31,9 @@ function ExtractColumns(tableSql) {
 }
 
 export function parseSQL(sql) {
-  return GetTablesStrings(sql)
-    .map((tableSql, index) => {
+  const tables = GetTablesStrings(sql);
+
+  return tables.map((tableSql, index) => {
       const title = ExtractTableTitle(tableSql);
       const rows = ExtractColumns(tableSql);
       return {

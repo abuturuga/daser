@@ -12,11 +12,15 @@ const PANEL_HEADER_CLASS = 'panel-header';
 const TABLE_TITLE_INPUT_CLASS = 'table-title-input';
 const TABLE_DESCRIPTION_INPUT_CLASS = 'table-description-input';
 
+const COLUMNS_LIST_CLASS = 'table-properties__columns-list';
+const COLUMNS_LIST_DELETE_BUTTON_CLASS = `${COLUMNS_LIST_CLASS}__delete`
+
 export class PropertiesPanelComponent extends BaseComponent {
 
   constructor() {
     super('div', COMPONENT_CLASS);
 
+    this.$columnsList = null;
     this.state = {
       table: {}
     };
@@ -45,6 +49,9 @@ export class PropertiesPanelComponent extends BaseComponent {
 
     this.inputs.title.value = title;
     this.inputs.description.value = description;
+
+    this.$element.querySelector(`.${COLUMNS_LIST_CLASS}`)
+      .innerHTML = this.getColumnsListTemplate(this.state.table.rows);
   }
 
   renderChildComponents() {
@@ -56,33 +63,20 @@ export class PropertiesPanelComponent extends BaseComponent {
     }), `.${PANEL_HEADER_CLASS}`);
   }
 
-  getColumnsListTemplate() {
-    return `
-    <ul class="table-properties__columns__list">
+  getColumnsListTemplate(rows) {
+    return rows.map(row => `
       <li>
         <div class="input-form">
           <label>Name</label>
-          <input type="text" placeholder="Column Name"/>
+          <input type="text" placeholder="Column Name" value=${row.name}/>
         </div>
         <div class="input-form">
           <label>Type</label>
-          <input type="text" placeholder="Column Type"/>
+          <input type="text" placeholder="Column Type" value=${row.type}/>
         </div>
-        <span class="input-checkbox">
-          <label><span>Not Null</span>
-            <i class="material-icons">check_box</i>
-          </label>
-        </span>
-        <span class="input-checkbox">
-          <label><span>PK</span>
-            <i class="material-icons">check_box</i>
-          </label>
-        </span>
-        <i class="material-icons">edit</i>
-        <i class="material-icons">delete</i>
+        <i class="material-icons" class="${COLUMNS_LIST_DELETE_BUTTON_CLASS}">delete</i>
       </li>
-    </ul>
-    `;
+    `).join('');
   }
 
   getTemplate() {
@@ -106,14 +100,9 @@ export class PropertiesPanelComponent extends BaseComponent {
 
         ${PanelContentComponent(
           'Columns', `
-            <div class="table-properties__columns__header">
-              <label>Name</label>
-              <label>Type</label>
-              <label>NL</label>
-              <label>PK</label>
-            </div>
-            ${this.getColumnsListTemplate()}
-          `
+            <ul class="${COLUMNS_LIST_CLASS}">
+              ${this.getColumnsListTemplate([])}
+            </ul>`
         )}
 
         ${PanelContentComponent(

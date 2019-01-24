@@ -1,5 +1,3 @@
-const PUBSUB_ERROR_UNDEFINED_EVENT = 'Pubsub:: undefined event';
-
 
 export class PubSub {
 

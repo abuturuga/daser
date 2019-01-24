@@ -1,0 +1,15 @@
+.table-properties {
+  
+  &__columns-list {
+    li {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+
+      .input-form:first-child {
+        margin-right: 8px;
+      }
+    }
+  }
+}
