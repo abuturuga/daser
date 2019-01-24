@@ -18,11 +18,16 @@ export class CanvasLayoutService {
     } else {
       const lastIndex = this.tables.length - 1;
       const lastTable = this.tables[lastIndex];
-
+      let y = 30;
+      let x = lastTable.x + width + 30;
+      if (lastIndex % 2 === 0) {
+        y += 300;
+        x = 100;
+      }
       this.tables.push({
         id: table.id,
-        x: lastTable.x + width + 30,
-        y: 30
+        x,
+        y
       })
     }
 
