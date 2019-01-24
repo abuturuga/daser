@@ -3,6 +3,7 @@ import PubSub from './pubsub.js';
 
 const tableData = {
   title: 'Main table',
+  id: 0,
   rows: [
     {
       name: 'Col name',
@@ -34,7 +35,7 @@ const tableData = {
 };
 
 const state = {
-  tables: Array(1).fill(0).map(_ => Object.assign({}, tableData)),
+  tables: Array(3).fill(3).map((_, index) => Object.assign({}, tableData, {id: index})),
   references: []
 }
 
