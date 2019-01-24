@@ -1,0 +1,46 @@
+.canvas-component {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: block;
+  background: #757575;
+
+  &__zoom-bar {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 27px;
+    background: #dedede;
+    border-radius: 24px;
+    padding: 4px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__button {
+      outline: none;
+      border: none;
+      background: transparent;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      .material-icons {
+        font-size: 21px;
+      }
+    }
+
+    &__svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.canvas-relation {
+  fill: none;
+  stroke-width: 2px;
+  stroke: white;
+}
