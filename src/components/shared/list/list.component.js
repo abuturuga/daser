@@ -3,6 +3,7 @@ import { BaseComponent } from '../../../base.component.js';
 
 const COMPONENT_CLASS = 'list-component';
 const ITEM_CLASS = `${COMPONENT_CLASS}__item`;
+const ITEM_SELECTED_CLASS = `${ITEM_CLASS}--selected`
 
 export class ListComponent extends BaseComponent {
 
@@ -33,7 +34,9 @@ export class ListComponent extends BaseComponent {
     return (properties.items.length === 0)
       ? '<div>No items<div>' 
       : properties.items.map(item => `
-          <li class="${ITEM_CLASS}" data-item=${item.id}>
+          <li class="${ITEM_CLASS}
+            ${(parseInt(item.id) === parseInt(properties.selected)) ? ITEM_SELECTED_CLASS : ''}" 
+            data-item=${item.id}>
             ${icon}
             <span>${item.title}</span>
           </li>

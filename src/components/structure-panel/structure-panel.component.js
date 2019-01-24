@@ -25,7 +25,8 @@ export class StructurePanelComponent extends BaseComponent {
 
     this.state = {
       tables: [],
-      references: []
+      references: [],
+      selectedTable: null
     };
 
     this.onTableSelect = this.onTableSelect.bind(this);
@@ -39,7 +40,8 @@ export class StructurePanelComponent extends BaseComponent {
     const { tables, references } = state;
 
     this.setState({
-      tables: tables.map(({title, id}) => ({ title, id }))
+      tables: tables.map(({title, id}) => ({ title, id })),
+      selectedTable: state.selectedTable
     });
   }
 
@@ -54,7 +56,8 @@ export class StructurePanelComponent extends BaseComponent {
   updateComponent() {
     this.tableListComponent.update({
       items: this.state.tables,
-      icon: 'table_chart'
+      icon: 'table_chart',
+      selected: this.state.selectedTable
     });
 
     this.referencesListComponent.update({
