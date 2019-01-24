@@ -1,0 +1,13 @@
+.list-component {
+
+  &__item {
+    height: 32px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    span {
+      margin-left: 4px;
+    }
+  }
+}

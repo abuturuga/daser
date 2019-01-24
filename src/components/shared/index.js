@@ -1,3 +1,9 @@
-import { PanelHeaderComponent } from './panel-header/panel-header.component.js';
+import { PanelHeaderComponent, PanelContentComponent } from './panel/index.js';
+import { ListComponent } from './list/list.component.js';
 
-export { PanelHeaderComponent };
+
+export { 
+  PanelHeaderComponent,
+  PanelContentComponent,
+  ListComponent
+};

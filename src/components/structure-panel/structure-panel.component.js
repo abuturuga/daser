@@ -1,10 +1,15 @@
 import { BaseComponent } from '../../base.component.js';
-import { PanelHeaderComponent } from '../shared/index.js';
+import {
+  PanelHeaderComponent,
+  PanelContentComponent,
+  ListComponent
+} from '../shared/index.js';
 
-
+/** Component CSS classes */
 const COMPONENT_CLASS = 'structure-component';
 const PANEL_HEADER_CLASS = 'panel-header';
-
+const TABLES_LIST_CLASS = 'tables-list-container';
+const REFERENCES_LIST_CLASS = 'reference-list-container';
 
 export class StructurePanelComponent extends BaseComponent {
 
@@ -14,11 +19,23 @@ export class StructurePanelComponent extends BaseComponent {
 
   renderChildComponents() {
     this.panelHeader = new PanelHeaderComponent();
+    this.tableListComponent = new ListComponent();
+    this.referencesListComponent = new ListComponent();
 
     this.attach(this.panelHeader.render({
       title: 'Structure',
       onClose: () => console.log('on close')
     }), `.${PANEL_HEADER_CLASS}`);
+
+    this.attach(this.tableListComponent.render({
+      items: ['Main1', 'Main2'],
+      icon: 'table_chart'
+    }), `.${TABLES_LIST_CLASS}`);
+
+    this.attach(this.referencesListComponent.render({
+      items: ['reference1', 'reference2'],
+      icon: 'show_chart'
+    }), `.${REFERENCES_LIST_CLASS}`);
   }
 
   getTemplate() {
@@ -26,45 +43,30 @@ export class StructurePanelComponent extends BaseComponent {
       <header class="${PANEL_HEADER_CLASS}"></header>
 
       <div class="panel__content">
-        <section class="panel__content__section">
-          <header class="panel__content__section__header">
-            <h3 class="panel__content__section__header__title">Tables</h3>
-          </header>
-          <ul class="table-tree_list list-component">
-            <li class="list-component__item">
-              <i class="material-icons">table_chart</i>
-              <span>Table 1</span>
-            </li>
-          </ul>
-        </section>
-        <section class="panel__content__section">
-          <header class="panel__content__section__header">
-            <h3 class="panel__content__section__header__title">Referinces</h3>
-          </header>
-          <ul class="referince-tree_list list-component">
-            <li class="list-component__item">
-              <i class="material-icons">show_chart</i>
-              <span>Referince 1</span>
-            </li>
-          </ul>
-        </section>
-        <section class="note-tree panel__content__section">
-          <header class="panel__content__section__header">
-            <h3 class="panel__content__section__header__title">Notes</h3>
-          </header>
-          <ul class="note-tree_list">
-            <li>
-              <div class="input-form">
-                <textarea rows="2">Lorem ipsun</textarea>  
-              </div>
-            </li>
-            <li>
-              <div class="input-form">
-                <textarea rows="2">Lorem ipsun</textarea>  
-              </div>
+        ${PanelContentComponent(
+          'Tables', `<div class="${TABLES_LIST_CLASS}"></div`
+        )}
+
+        ${PanelContentComponent(
+          'References', `<div class="${REFERENCES_LIST_CLASS}"></div`
+        )}
+
+        ${PanelContentComponent(
+          'Notes', `
+            <ul class="note-tree_list">
+              <li>
+                <div class="input-form">
+                  <textarea rows="2">Lorem ipsun</textarea>  
+                </div>
               </li>
-          </ul>
-        </section>
+              <li>
+                <div class="input-form">
+                  <textarea rows="2">Lorem ipsun</textarea>  
+                </div>
+                </li>
+            </ul>
+          `
+        )}
       </div>
     `
   }

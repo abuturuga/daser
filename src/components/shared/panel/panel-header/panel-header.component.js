@@ -1,16 +1,27 @@
-import { BaseComponent } from '../../../base.component';
+import { BaseComponent } from '../../../../base.component.js';
 
-
+/** Component CSS classes */
 const COMPONENT_CLASS = 'panel__header';
 const CLOSE_BUTTON = `${COMPONENT_CLASS}__close-btn`;
 const CLOSE_BUTTON_MOBILE = `${COMPONENT_CLASS}__close-btn--mobile`;
 
+/**
+ * Render the header of the panel, emit on close events.
+ * @class
+ * @public
+ */
 export class PanelHeaderComponent extends BaseComponent {
 
   constructor() {
     super('header', COMPONENT_CLASS);
   }
 
+  /**
+   * Attach a click event on the close buttons in order to be propagated
+   * into the props callback.
+   * @param {object} properties Component properties
+   * @returns {void}
+   */
   bindEventListeners(properties) {
     this.$closeButton = this.$element.querySelector(`.${CLOSE_BUTTON}`)
     this.$closeButton.addEventListener('click', event => {
