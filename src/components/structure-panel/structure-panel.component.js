@@ -1,5 +1,6 @@
 import { BaseComponent } from '../../base.component.js';
 import PubSub from '../../pubsub.js';
+import { setSelectedTable } from '../../actions.js'
 import {
   PanelHeaderComponent,
   PanelContentComponent,
@@ -12,6 +13,11 @@ const PANEL_HEADER_CLASS = 'panel-header';
 const TABLES_LIST_CLASS = 'tables-list-container';
 const REFERENCES_LIST_CLASS = 'reference-list-container';
 
+/**
+ * Component implementing and handling the strcture panel.
+ * @class
+ * @public
+ */
 export class StructurePanelComponent extends BaseComponent {
 
   constructor() {
@@ -33,12 +39,12 @@ export class StructurePanelComponent extends BaseComponent {
     const { tables, references } = state;
 
     this.setState({
-      tables: tables.map(table => table.title)
+      tables: tables.map(({title, id}) => ({ title, id }))
     });
   }
 
-  onTableSelect(table) {
-    console.log(table);
+  onTableSelect(tableId) {
+    PubSub.emit('state:set', setSelectedTable(tableId));
   }
 
   onReferenceSelect(reference) {

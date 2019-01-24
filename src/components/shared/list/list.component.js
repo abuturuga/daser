@@ -33,9 +33,9 @@ export class ListComponent extends BaseComponent {
     return (properties.items.length === 0)
       ? '<div>No items<div>' 
       : properties.items.map(item => `
-          <li class="${ITEM_CLASS}" data-item=${item}>
+          <li class="${ITEM_CLASS}" data-item=${item.id}>
             ${icon}
-            <span>${item}</span>
+            <span>${item.title}</span>
           </li>
       `).join('');
   }

@@ -1,5 +1,6 @@
 import { BaseComponent } from '../../base.component.js';
 import PubSub from '../../pubsub.js';
+import { updateTable } from '../../actions.js';
 import {
   PanelHeaderComponent,
   PanelContentComponent
@@ -8,10 +9,42 @@ import {
 const COMPONENT_CLASS = 'properties-panel-component';
 const PANEL_HEADER_CLASS = 'panel-header';
 
+const TABLE_TITLE_INPUT_CLASS = 'table-title-input';
+const TABLE_DESCRIPTION_INPUT_CLASS = 'table-description-input';
+
 export class PropertiesPanelComponent extends BaseComponent {
 
   constructor() {
     super('div', COMPONENT_CLASS);
+
+    this.state = {
+      table: {}
+    };
+
+    this.inputs = {
+      title: null,
+      description: null
+    };
+
+    this.handleStateChange = this.handleStateChange.bind(this);
+
+    PubSub.on('state:changed', this.handleStateChange);
+  }
+
+  handleStateChange(state) {
+    const { selectedTable, tables } = state;
+
+    const table = tables.find(t => parseInt(t.id) === parseInt(selectedTable));
+    if (table) {
+      this.setState({table});
+    }
+  }
+
+  updateComponent() {
+    const { title, description } = this.state.table;
+
+    this.inputs.title.value = title;
+    this.inputs.description.value = description;
   }
 
   renderChildComponents() {
@@ -61,12 +94,12 @@ export class PropertiesPanelComponent extends BaseComponent {
           'Meta', `
             <div class="input-form">
               <label>Name</label>
-              <input type="text" placeholder="Table name"/>
+              <input type="text" placeholder="Table name" class="${TABLE_TITLE_INPUT_CLASS}"/>
             </div>
 
             <div class="input-form">
               <label>Description</label>
-              <textarea rows="2" placeholder="Table description"></textarea>
+              <textarea rows="2" placeholder="Table description" class="${TABLE_DESCRIPTION_INPUT_CLASS}"></textarea>
             </div>
           `
         )}
@@ -101,4 +134,23 @@ export class PropertiesPanelComponent extends BaseComponent {
     `
   }
 
+  setInputs() {
+    this.inputs.title = this.$element.querySelector(`.${TABLE_TITLE_INPUT_CLASS}`);
+    this.inputs.description = this.$element.querySelector(`.${TABLE_DESCRIPTION_INPUT_CLASS}`);
+
+    this.inputs.title.addEventListener('change', event => {
+      const { table } = this.state;
+      const { value } = event.target;
+
+      if (table && table.id !== 'undefined') {
+        PubSub.emit('state:set', updateTable(Object.assign({}, table, {title: value})));
+      }
+    });
+  }
+
+  render() {
+    let $element = super.render();
+    this.setInputs();
+    return $element;
+  }
 }

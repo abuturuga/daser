@@ -1,55 +1,43 @@
-import types from './types.js';
 import PubSub from './pubsub.js';
+import {
+  UPDATE_STATE,
+  UPDATE_TABLE,
+  SET_SELECTED_TABLE
+} from './actions.js'
 
-const tableData = {
-  title: 'Main table',
-  id: 0,
-  rows: [
-    {
-      name: 'Col name',
-      type: 'VARCHAR(30)',
-      default: 'NULL',
-      key: types.KEYS.PRIMARY
-    },
-    {
-      name: 'Col name2',
-      type: 'VARCHAR(30)',
-      default: 'NULL',
-    },
-    {
-      name: 'Col name2',
-      type: 'VARCHAR(30)',
-      default: 'NULL',
-    },
-    {
-      name: 'Col name2',
-      type: 'VARCHAR(30)',
-      default: 'NULL',
-    },
-    {
-      name: 'Col name2',
-      type: 'VARCHAR(30)',
-      default: 'NULL',
-    }
-  ]
-};
 
-const state = {
-  tables: Array(3).fill(3).map((_, index) => Object.assign({}, tableData, {id: index})),
+let state = {
+  tables: [],
   references: [],
   isMobile: false,
+  selectedTable: null,
   panels: {
     isStructureOpen: true,
     isPropertiesOpen: true
   }
+};
+
+function reducer({type, payload}) {
+  switch(type) {
+    case UPDATE_STATE:
+      return Object.assign({}, state, payload);
+    case SET_SELECTED_TABLE:
+      return Object.assign({}, state, { selectedTable: payload });
+    case UPDATE_TABLE:
+      const table = state.tables.find(t => parseInt(t.id) === parseInt(payload.id));
+      if (!table) return state;
+      Object.assign(table, payload);
+      return state;
+    default:
+      return state;
+  }
 }
 
-PubSub.on('state:set', (event) => {
-
+PubSub.on('state:set', (action) => {
+  state = reducer(action);
+  console.log(action);
   PubSub.emit('state:changed', state);
 });
-
-
 
 export function init() {
   PubSub.emit('state:set', state);
