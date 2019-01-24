@@ -29,6 +29,10 @@ export class CanvasComponent extends BaseComponent {
     
     this.state = {
       zoom: 1,
+      scroll: {
+        x: 0,
+        y: 0
+      },
       tables: []
     };
 
@@ -50,13 +54,20 @@ export class CanvasComponent extends BaseComponent {
     this.$element.querySelector(`.${ZOOM_OUT_CLASS}`).addEventListener('click', () => {
       this.setState(({zoom: this.state.zoom - .3}));
     });
+
+    const $svg = this.$element.querySelector(`.${SVG_CLASS}`);
+    $svg.addEventListener('mousewheel', event => {
+      const { deltaX, deltaY } = event;
+      const { x, y } = this.state.scroll;
+      this.setState({scroll: {x: x + deltaX, y: deltaY}});
+    });
   }
 
   updateComponent() {
-    const { tables, zoom } = this.state;
+    const { tables, zoom, scroll } = this.state;
 
     this.$element.querySelector(`.${SVG_CLASS}`).innerHTML = 
-    `<g transform=scale(${zoom})>` +
+    `<g transform="scale(${zoom}) translate(${scroll.x}, ${scroll.y})">` +
     tables.map(props => {
       const tableComponent = new TableComponent();
       const position = this.layoutService.getTablePosition(props);
