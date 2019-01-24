@@ -21,7 +21,7 @@ export class CanvasLayoutService {
         x: 40,
         y: 30
       });
-    } else {
+    } else if(!this.tables.find(t => parseInt(t.id) === parseInt(table.id))) {
       const lastIndex = this.tables.length - 1;
       const lastTable = this.tables[lastIndex];
       let y = 30;
