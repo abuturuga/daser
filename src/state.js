@@ -14,7 +14,7 @@ let state = {
   selectedTable: null,
   panels: {
     isStructureOpen: true,
-    isPropertiesOpen: true
+    isPropertiesOpen: false
   }
 };
 
