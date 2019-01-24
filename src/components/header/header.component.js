@@ -1,13 +1,14 @@
-import { BaseComponent } from '../../base.component';
+import { BaseComponent } from '../../base.component.js';
+import { SQLModalComponent } from './sql-modal.component.js';
 
-
+/** Component CSS classes */
 const COMPONENT_CLASS = 'header-component';
 const LOGO_CLASS = `${COMPONENT_CLASS}__logo`;
 const MOBILE_BUTTON = `${COMPONENT_CLASS}__mobile-menu-btn`;
 
 const WORK_BAR = `${COMPONENT_CLASS}__work-bar`;
 const WORK_BAR_BUTTON = `${WORK_BAR}__button`;
-
+const SQL_MODAL_CLASS = 'sql-modal-container';
 
 export class HeaderComponent extends BaseComponent {
 
@@ -28,6 +29,13 @@ export class HeaderComponent extends BaseComponent {
         // TODO:
       });
     });
+  }
+
+  renderChildComponents() {
+    this.sqlModalComponent = new SQLModalComponent();
+
+    this.attach(this.sqlModalComponent.render(), `.${SQL_MODAL_CLASS}`);
+    this.sqlModalComponent.open();
   }
 
   getTemplate() {
@@ -59,6 +67,7 @@ export class HeaderComponent extends BaseComponent {
         ${ saveButtons }
       </div>
       ${ this.renderButtonTemplate('more_vert') }
+      <div class="${SQL_MODAL_CLASS}"></div>
     `
   }
 
