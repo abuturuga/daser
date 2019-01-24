@@ -1,5 +1,6 @@
 import { BaseComponent } from '../base.component.js';
 import PubSub from '../pubsub.js';
+import { TableComponent } from './table-component/table.comonent.js';
 
 const COMPONENT_CLASS = 'canvas-component';
 const ZOOM_BAR_CLASS = `${COMPONENT_CLASS}__zoom-bar`;
@@ -9,7 +10,20 @@ const SVG_CLASS = `${COMPONENT_CLASS}__svg`;
 export class CanvasComponent extends BaseComponent {
   
   constructor() {
-    super('div', COMPONENT_CLASS)
+    super('div', COMPONENT_CLASS);
+
+    this.handleStateChange = this.handleStateChange.bind(this);
+
+    PubSub.on('state:changed', this.handleStateChange);
+  }
+
+  handleStateChange(state) {
+    const { tables } = state;
+    document.querySelector(`.${SVG_CLASS}`).innerHTML = 
+    tables.map(props => {
+      const tableComponent = new TableComponent();
+      return tableComponent.render(props);
+    }).join('');
   }
 
   getTemplate() {

@@ -1,16 +1,17 @@
 import { HeaderComponent } from './header.comonent.js';
 import { ContentComponent } from './content.component.js';
+import TableConfig from './table.config.js';
 
 export class TableComponent {
 
-  constructor(config) {
-    this.config = config;
+  constructor() {
+    this.config = TableConfig.get();
 
-    this.width = config.width;
-    this.height = config.header.height;
+    this.width = this.config.width;
+    this.height = this.config.header.height;
 
-    this.headerComponent = new HeaderComponent(config);
-    this.contentComponent = new ContentComponent(config);
+    this.headerComponent = new HeaderComponent(this.config);
+    this.contentComponent = new ContentComponent(this.config);
     this.setPosition(20, 20);
   }
 

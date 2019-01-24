@@ -34,7 +34,7 @@ const tableData = {
 };
 
 const state = {
-  tables: Array(4).fill(0).map(_ => Object.assign({}, tableData)),
+  tables: Array(1).fill(0).map(_ => Object.assign({}, tableData)),
   references: []
 }
 
