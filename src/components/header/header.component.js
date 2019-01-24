@@ -1,7 +1,7 @@
 import { BaseComponent } from '../../base.component.js';
 import { SQLModalComponent } from './sql-modal.component.js';
 import { GeneratedModalComponent } from './generated-modal.component.js';
-import { togglePropertiesPanel } from '../../actions.js';
+import { togglePropertiesPanel, createTable } from '../../actions.js';
 import PubSub from '../../pubsub.js';
 
 /** Component CSS classes */
@@ -41,6 +41,8 @@ export class HeaderComponent extends BaseComponent {
           PubSub.emit('state:set', togglePropertiesPanel(true));
         } else if(type === 'save') {
           this.generatedModalComponent.open(this.tables);
+        } else if(type === 'add_box') {
+          PubSub.emit('state:set', createTable({title: 'NewTable'}));
         }
       });
     });

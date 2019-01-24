@@ -2,6 +2,7 @@ export const UPDATE_STATE = 'UPDATE_STATE';
 export const UPDATE_TABLE = 'UPDATE_TABLE';
 export const SET_SELECTED_TABLE = 'SET_SELECTED_TABLE';
 export const TOGGLE_PROPERTIES_PANEL = 'TOGGLE_PROPERTIES_PANEL';
+export const CREATE_TABLE = 'CREATE_TABLE';
 
 export function updateState(payload) {
   return { type: UPDATE_STATE, payload };
@@ -17,4 +18,8 @@ export function setSelectedTable(payload) {
 
 export function togglePropertiesPanel(payload) {
   return { type: TOGGLE_PROPERTIES_PANEL, payload };
+}
+
+export function createTable(payload) {
+  return { type: CREATE_TABLE, payload };
 }

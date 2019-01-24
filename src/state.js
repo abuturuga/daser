@@ -3,7 +3,8 @@ import {
   UPDATE_STATE,
   UPDATE_TABLE,
   SET_SELECTED_TABLE,
-  TOGGLE_PROPERTIES_PANEL
+  TOGGLE_PROPERTIES_PANEL,
+  CREATE_TABLE
 } from './actions.js'
 
 
@@ -31,6 +32,12 @@ function reducer({type, payload}) {
       return state;
     case TOGGLE_PROPERTIES_PANEL:
       return Object.assign({}, state, { panels: {isPropertiesOpen: payload }});
+    case CREATE_TABLE:
+      const { tables } = state;
+      const { length } = tables;
+      const newTable = Object.assign({}, payload, {id: length, rows: []});
+      tables.push(newTable);
+      return state;
     default:
       return state;
   }
