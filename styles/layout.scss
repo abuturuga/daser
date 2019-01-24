@@ -19,11 +19,9 @@ body,
   grid-area: structure-panel;
 }
 
-.properties-panel {
-  grid-area: properties-panel;
-}
-
 .app-component {
+  position: relative;
+  overflow-x: hidden;
   width: 100%;
   height: 100%;
   display: grid;
@@ -32,7 +30,7 @@ body,
   grid-template-rows: 50px auto;
   grid-template-areas: 
     "navigation navigation navigation"
-    "structure-panel canvas properties-panel"
+    "structure-panel canvas canvas"
   ;
 }
 

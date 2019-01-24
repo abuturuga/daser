@@ -1,6 +1,6 @@
 import { BaseComponent } from '../../base.component.js';
 import PubSub from '../../pubsub.js';
-import { updateTable } from '../../actions.js';
+import { updateTable, togglePropertiesPanel } from '../../actions.js';
 import {
   PanelHeaderComponent,
   PanelContentComponent
@@ -14,6 +14,9 @@ const TABLE_DESCRIPTION_INPUT_CLASS = 'table-description-input';
 
 const COLUMNS_LIST_CLASS = 'table-properties__columns-list';
 const COLUMNS_LIST_DELETE_BUTTON_CLASS = `${COLUMNS_LIST_CLASS}__delete`
+
+const HOST_CLASS = 'properties-panel';
+const HOST_EXPANDED_CLASS = `${HOST_CLASS}--expanded`;
 
 export class PropertiesPanelComponent extends BaseComponent {
 
@@ -42,6 +45,13 @@ export class PropertiesPanelComponent extends BaseComponent {
     if (table) {
       this.setState({table});
     }
+
+    const $host = document.querySelector(`.${HOST_CLASS}`);
+    if (state.panels && state.panels.isPropertiesOpen) {
+      $host.classList.add(HOST_EXPANDED_CLASS);
+    } else {
+      $host.classList.remove(HOST_EXPANDED_CLASS);
+    }
   }
 
   updateComponent() {
@@ -59,7 +69,7 @@ export class PropertiesPanelComponent extends BaseComponent {
 
     this.attach(this.panelHeader.render({
       title: 'Properties',
-      onClose: () => console.log('on close')
+      onClose: () => PubSub.emit('state:set', togglePropertiesPanel(false))
     }), `.${PANEL_HEADER_CLASS}`);
   }
 

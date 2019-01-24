@@ -1,3 +1,19 @@
+$properties-panel-width: 500px;
+$properties-panel-top: 60px;
+
+.properties-panel {
+  position: absolute;
+  right: 0;
+  top: $properties-panel-top;
+  width: $properties-panel-width;
+
+  transform: translate($properties-panel-width, 0);
+
+  &--expanded {
+    transform: translate(0, 0);
+  }
+}
+
 .table-properties {
   
   &__columns-list {

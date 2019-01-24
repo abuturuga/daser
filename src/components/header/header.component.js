@@ -1,5 +1,7 @@
 import { BaseComponent } from '../../base.component.js';
 import { SQLModalComponent } from './sql-modal.component.js';
+import { togglePropertiesPanel } from '../../actions.js';
+import PubSub from '../../pubsub.js';
 
 /** Component CSS classes */
 const COMPONENT_CLASS = 'header-component';
@@ -28,6 +30,8 @@ export class HeaderComponent extends BaseComponent {
         const type = $button.dataset.type;
         if (type === 'cloud_upload') {
           this.sqlModalComponent.open();
+        } else if(type === 'settings') {
+          PubSub.emit('state:set', togglePropertiesPanel(true));
         }
       });
     });
@@ -48,7 +52,7 @@ export class HeaderComponent extends BaseComponent {
       .map(buttonName => this.renderButtonTemplate(buttonName))
       .join('');
 
-    const saveButtons = ['cloud_upload', 'share', 'save']
+    const saveButtons = ['cloud_upload', 'save', 'settings']
       .map(buttonName => this.renderButtonTemplate(buttonName))
       .join('');
 
@@ -67,7 +71,6 @@ export class HeaderComponent extends BaseComponent {
       <div class="options-bar">
         ${ saveButtons }
       </div>
-      ${ this.renderButtonTemplate('more_vert') }
       <div class="${SQL_MODAL_CLASS}"></div>
     `
   }

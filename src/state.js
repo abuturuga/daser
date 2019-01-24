@@ -2,7 +2,8 @@ import PubSub from './pubsub.js';
 import {
   UPDATE_STATE,
   UPDATE_TABLE,
-  SET_SELECTED_TABLE
+  SET_SELECTED_TABLE,
+  TOGGLE_PROPERTIES_PANEL
 } from './actions.js'
 
 
@@ -28,6 +29,8 @@ function reducer({type, payload}) {
       if (!table) return state;
       Object.assign(table, payload);
       return state;
+    case TOGGLE_PROPERTIES_PANEL:
+      return Object.assign({}, state, { panels: {isPropertiesOpen: payload }});
     default:
       return state;
   }
