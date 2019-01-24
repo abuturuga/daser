@@ -36,7 +36,12 @@ const tableData = {
 
 const state = {
   tables: Array(3).fill(3).map((_, index) => Object.assign({}, tableData, {id: index})),
-  references: []
+  references: [],
+  isMobile: false,
+  panels: {
+    isStructureOpen: true,
+    isPropertiesOpen: true
+  }
 }
 
 PubSub.on('state:set', (event) => {

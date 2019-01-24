@@ -18,7 +18,7 @@ export class PropertiesPanelComponent extends BaseComponent {
     this.panelHeader = new PanelHeaderComponent();
 
     this.attach(this.panelHeader.render({
-      title: 'Structure',
+      title: 'Properties',
       onClose: () => console.log('on close')
     }), `.${PANEL_HEADER_CLASS}`);
   }

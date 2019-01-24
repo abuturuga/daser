@@ -86,11 +86,11 @@ export class StructurePanelComponent extends BaseComponent {
 
       <div class="panel__content">
         ${PanelContentComponent(
-          'Tables', `<div class="${TABLES_LIST_CLASS}"></div`
+          'Tables', `<div class="${TABLES_LIST_CLASS}"></div>`
         )}
 
         ${PanelContentComponent(
-          'References', `<div class="${REFERENCES_LIST_CLASS}"></div`
+          'References', `<div class="${REFERENCES_LIST_CLASS}"></div>`
         )}
 
         ${PanelContentComponent(
