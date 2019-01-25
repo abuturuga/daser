@@ -24,6 +24,8 @@ export class PanelHeaderComponent extends BaseComponent {
    */
   bindEventListeners(properties) {
     this.$closeButton = this.$element.querySelector(`.${CLOSE_BUTTON}`)
+    if (!this.$closeButton) return;
+
     this.$closeButton.addEventListener('click', event => {
       if (properties.onClose && typeof properties.onClose === 'function') {
         properties.onClose(event);
@@ -32,11 +34,15 @@ export class PanelHeaderComponent extends BaseComponent {
   }
 
   getTemplate(properties) {
-    return `
-      <button class="${CLOSE_BUTTON} icon-btn">
-        <i class="material-icons">close</i>
-      </button>
+    const closeButton = properties.hasClose
+      ? `
+        <button class="${CLOSE_BUTTON} icon-btn">
+          <i class="material-icons">close</i>
+        </button>
+      ` : ''
 
+    return `
+      ${closeButton}
       <button class="${CLOSE_BUTTON_MOBILE} icon-btn">
         <i class="material-icons">keyboard_backspace</i>
       </button>

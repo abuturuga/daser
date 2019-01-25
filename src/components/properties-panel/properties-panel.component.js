@@ -1,6 +1,10 @@
 import { BaseComponent } from '../../base.component.js';
 import PubSub from '../../pubsub.js';
-import { updateTable, togglePropertiesPanel } from '../../actions.js';
+import {
+  updateTable,
+  togglePropertiesPanel,
+  updateTableRow 
+} from '../../actions.js';
 import {
   PanelHeaderComponent,
   PanelContentComponent
@@ -14,9 +18,11 @@ const TABLE_DESCRIPTION_INPUT_CLASS = 'table-description-input';
 
 const COLUMNS_LIST_CLASS = 'table-properties__columns-list';
 const COLUMNS_LIST_DELETE_BUTTON_CLASS = `${COLUMNS_LIST_CLASS}__delete`
+const COLUMNS_LIST_INPUT_CLASS = `${COLUMNS_LIST_CLASS}__input`;
 
 const HOST_CLASS = 'properties-panel';
 const HOST_EXPANDED_CLASS = `${HOST_CLASS}--expanded`;
+
 
 export class PropertiesPanelComponent extends BaseComponent {
 
@@ -34,6 +40,7 @@ export class PropertiesPanelComponent extends BaseComponent {
     };
 
     this.handleStateChange = this.handleStateChange.bind(this);
+    this.handleColumnInputChange = this.handleColumnInputChange.bind(this);
 
     PubSub.on('state:changed', this.handleStateChange);
   }
@@ -59,9 +66,12 @@ export class PropertiesPanelComponent extends BaseComponent {
 
     this.inputs.title.value = title ? title : '';
     this.inputs.description.value = description ? description : '';
+    this.removeColumnsInputsEvents();
 
     this.$element.querySelector(`.${COLUMNS_LIST_CLASS}`)
       .innerHTML = this.getColumnsListTemplate(this.state.table.rows);
+    
+    this.setColumnsInputsEvents();
   }
 
   renderChildComponents() {
@@ -69,20 +79,31 @@ export class PropertiesPanelComponent extends BaseComponent {
 
     this.attach(this.panelHeader.render({
       title: 'Properties',
+      hasClose: true,
       onClose: () => PubSub.emit('state:set', togglePropertiesPanel(false))
     }), `.${PANEL_HEADER_CLASS}`);
   }
 
   getColumnsListTemplate(rows) {
-    return rows.map(row => `
+    return rows.map((row, index) => `
       <li>
         <div class="input-form">
           <label>Name</label>
-          <input type="text" placeholder="Column Name" value="${row.name}"/>
+          <input class="${COLUMNS_LIST_INPUT_CLASS}"
+            data-type="name"
+            data-id=${index}
+            type="text"
+            placeholder="Column Name"
+            value="${row.name}"/>
         </div>
         <div class="input-form">
           <label>Type</label>
-          <input type="text" placeholder="Column Type" value="${row.type}"/>
+          <input class="${COLUMNS_LIST_INPUT_CLASS}"
+            data-type="type"
+            data-id="${index}"
+            type="text"
+            placeholder="Column Type"
+            value="${row.type}"/>
         </div>
         <i class="material-icons" class="${COLUMNS_LIST_DELETE_BUTTON_CLASS}">delete</i>
       </li>
@@ -133,7 +154,37 @@ export class PropertiesPanelComponent extends BaseComponent {
     `
   }
 
+  handleColumnInputChange(event) {
+    const { target } = event;
+    const { id, type } = target.dataset;
+    const { table } = this.state;
+    const value = target.value;
+    const index = parseInt(id);
+    const row = Object.assign({}, table.rows[index]);
+    row[type] = value;
+    updateTableRow({id: table.id, row, rowIndex: index});
+  }
+
+  setColumnsInputsEvents() {
+    const $inputs = this.$element.querySelectorAll(`.${COLUMNS_LIST_INPUT_CLASS}`);
+
+    Array.prototype.forEach.call($inputs, $input => {
+      $input.addEventListener('change', this.handleColumnInputChange);
+    });
+  }
+
+  removeColumnsInputsEvents() {
+    const $inputs = this.$element.querySelectorAll(`.${COLUMNS_LIST_INPUT_CLASS}`);
+
+    Array.prototype.forEach.call($inputs, $input => {
+      $input.removeEventListener('change', this.handleColumnInputChange);
+    });
+  }
+
   setInputs() {
+    this.removeColumnsInputsEvents();
+    this.setColumnsInputsEvents();
+
     this.inputs.title = this.$element.querySelector(`.${TABLE_TITLE_INPUT_CLASS}`);
     this.inputs.description = this.$element.querySelector(`.${TABLE_DESCRIPTION_INPUT_CLASS}`);
 
