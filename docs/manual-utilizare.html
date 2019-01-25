@@ -5,8 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Manual de utilizare</title>
 </head>
-<body itemscope="itemscope" itemtype="https://schema.org/ScholarlyArticle">
-  <section id="introduction" role="doc-introduction">
+<body prefix="schema: http://schema.org">
+  <section role="contentinfo">
+    <dl>
+      <dt><b>Autori</b></dt>
+      <dd>
+        <a>Buturuga Alexandru</a>
+        <br></br>
+      </dd>
+    </dl>
+  </section>
+  <section typeof="sa:Introduction" id="introduction" role="doc-introduction">
     <h2>Despre aplicatie</h2>
     <p>
       Aceasta aplicatie aplicatie permite utilizatorilor sa vizualizeze schema unei
@@ -40,6 +49,28 @@
       Acest panou da posibilitatea utilizatorului unei selectii rapide pentru editarea unui tabel
       sau al unei referinte.
       Acest panou va afisa catre utilizatori toate tabelele create in aplicatie sau parsate.
+    </p>
+  </section>
+  <section id="properties-panel">
+    <h2>Panoul de proprietati</h2>
+    <p>
+      Acest panou da posibilitatea utilizatorului sa editeze un tabel individual, incepand
+      de la numele tabelului pana la coloane incluzand tipul, denumirea etc.
+    </p>
+  </section>
+  <section typeof="sa:HowToUse" id="howToUse" role="doc-howToUse">
+    <h2>Ghid de ansamblu</h2>
+    <p>
+      In aceasta sectiune va fi facut un rezumat la componentele enumerate mai sus pentru
+      o mai usoara intelegere.
+      Aplicatia isi propune asistarea utilizatorului in creearea unei baze de date, folosinduse
+      de validatori si de vizualizarea acesteia in timp real.
+      Pentru a incepe se poate folosi un script deja existent sau sa se creeze tablele si componentele
+      direct din aplicatie.
+      Aplicatia este sectionata in 4 parti: header-ul care permite efectuarea de actiuni la nivel de
+      canvas, management-ul de script SQL.
+      Panourile care ajuta la navigarea si modificarea tabelelor si canvas-ul care permite vizualizarea
+      starii aplicatiei.
     </p>
   </section>
 </body>
