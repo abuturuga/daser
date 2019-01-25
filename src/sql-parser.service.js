@@ -22,9 +22,9 @@ function ExtractColumns(tableSql) {
   const cols = tableSql.split('\n');
   const result = [];
   for (let i = 1; i < cols.length - 1; i++) {
-     const column = extractColumn(cols[i].trim());
-
-     result.push(column);
+    const column = extractColumn(cols[i].trim());
+    
+    result.push(column);
   }
 
   return result;

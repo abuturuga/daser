@@ -57,8 +57,8 @@ export class PropertiesPanelComponent extends BaseComponent {
   updateComponent() {
     const { title, description } = this.state.table;
 
-    this.inputs.title.value = title;
-    this.inputs.description.value = description;
+    this.inputs.title.value = title ? title : '';
+    this.inputs.description.value = description ? description : '';
 
     this.$element.querySelector(`.${COLUMNS_LIST_CLASS}`)
       .innerHTML = this.getColumnsListTemplate(this.state.table.rows);
@@ -78,11 +78,11 @@ export class PropertiesPanelComponent extends BaseComponent {
       <li>
         <div class="input-form">
           <label>Name</label>
-          <input type="text" placeholder="Column Name" value=${row.name}/>
+          <input type="text" placeholder="Column Name" value="${row.name}"/>
         </div>
         <div class="input-form">
           <label>Type</label>
-          <input type="text" placeholder="Column Type" value=${row.type}/>
+          <input type="text" placeholder="Column Type" value="${row.type}"/>
         </div>
         <i class="material-icons" class="${COLUMNS_LIST_DELETE_BUTTON_CLASS}">delete</i>
       </li>

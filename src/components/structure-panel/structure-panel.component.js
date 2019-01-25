@@ -1,6 +1,6 @@
 import { BaseComponent } from '../../base.component.js';
 import PubSub from '../../pubsub.js';
-import { setSelectedTable } from '../../actions.js'
+import { setSelectedTable, togglePropertiesPanel } from '../../actions.js'
 import {
   PanelHeaderComponent,
   PanelContentComponent,
@@ -47,6 +47,7 @@ export class StructurePanelComponent extends BaseComponent {
 
   onTableSelect(tableId) {
     PubSub.emit('state:set', setSelectedTable(tableId));
+    PubSub.emit('state:set', togglePropertiesPanel(true));
   }
 
   onReferenceSelect(reference) {
