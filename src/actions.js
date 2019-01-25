@@ -8,23 +8,23 @@ export const CREATE_TABLE = 'CREATE_TABLE';
 export const UPDATE_TABLE_ROW = 'UPDATE_TABLE_ROW';
 
 export function updateState(payload) {
-  return { type: UPDATE_STATE, payload };
+  PubSub.emit('state:set', ({ type: UPDATE_STATE, payload }));
 }
 
 export function updateTable(payload) {
-  return { type: UPDATE_TABLE, payload };
+  PubSub.emit('state:set', ({ type: UPDATE_TABLE, payload }));
 }
 
 export function setSelectedTable(payload) {
-  return { type: SET_SELECTED_TABLE, payload };
+  PubSub.emit('state:set', ({ type: SET_SELECTED_TABLE, payload }));
 }
 
 export function togglePropertiesPanel(payload) {
-  return { type: TOGGLE_PROPERTIES_PANEL, payload };
+  PubSub.emit('state:set', ({ type: TOGGLE_PROPERTIES_PANEL, payload }));
 }
 
 export function createTable(payload) {
-  return { type: CREATE_TABLE, payload };
+  PubSub.emit('state:set', ({ type: CREATE_TABLE, payload }));
 }
 
 export function updateTableRow(payload) {

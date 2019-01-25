@@ -46,8 +46,8 @@ export class StructurePanelComponent extends BaseComponent {
   }
 
   onTableSelect(tableId) {
-    PubSub.emit('state:set', setSelectedTable(tableId));
-    PubSub.emit('state:set', togglePropertiesPanel(true));
+    setSelectedTable(tableId);
+    togglePropertiesPanel(true);
   }
 
   onReferenceSelect(reference) {

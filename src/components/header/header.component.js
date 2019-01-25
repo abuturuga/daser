@@ -38,11 +38,11 @@ export class HeaderComponent extends BaseComponent {
         if (type === 'cloud_upload') {
           this.sqlModalComponent.open();
         } else if(type === 'settings') {
-          PubSub.emit('state:set', togglePropertiesPanel(true));
+          togglePropertiesPanel(true);
         } else if(type === 'save') {
           this.generatedModalComponent.open(this.tables);
         } else if(type === 'add_box') {
-          PubSub.emit('state:set', createTable({title: 'NewTable'}));
+          createTable({title: 'NewTable'});
         }
       });
     });

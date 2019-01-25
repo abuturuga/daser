@@ -19,7 +19,7 @@ export class SQLModalComponent extends ModalComponent {
         const sql = this.$element.querySelector(`.${SQL_INPUT_CLASS}`).value;
         const parsedSQL = parseSQL(sql);
 
-        PubSub.emit('state:set', updateState({tables: parsedSQL}));
+        updateState({tables: parsedSQL});
         this.close();
       });
   }

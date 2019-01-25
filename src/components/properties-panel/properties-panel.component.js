@@ -80,7 +80,7 @@ export class PropertiesPanelComponent extends BaseComponent {
     this.attach(this.panelHeader.render({
       title: 'Properties',
       hasClose: true,
-      onClose: () => PubSub.emit('state:set', togglePropertiesPanel(false))
+      onClose: () => togglePropertiesPanel(false)
     }), `.${PANEL_HEADER_CLASS}`);
   }
 
@@ -193,7 +193,7 @@ export class PropertiesPanelComponent extends BaseComponent {
       const { value } = event.target;
 
       if (table && table.id !== 'undefined') {
-        PubSub.emit('state:set', updateTable(Object.assign({}, table, {title: value})));
+        updateTable(Object.assign({}, table, {title: value}));
       }
     });
   }
